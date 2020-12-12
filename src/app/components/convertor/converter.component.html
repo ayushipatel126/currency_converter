@@ -6,7 +6,7 @@
     <div class="example-container">
 
       <!--  From Currency  -->
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" data-cy="fromCurrency">
         <mat-label>From</mat-label>
         <input type="text" placeholder="from" matInput formControlName="from" (keypress)="onFromValueChange()"
                [matAutocomplete]="from">
@@ -18,7 +18,7 @@
       </mat-form-field>
 
       <!--  To Currency  -->
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" data-cy="toCurrency">
         <mat-label>To</mat-label>
         <input type="text" placeholder="to" matInput formControlName="to" (keypress)="onToValueChange()"
                [matAutocomplete]="to">
@@ -30,19 +30,19 @@
       </mat-form-field>
 
       <!--  Date of conversion  -->
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" data-cy="date">
         <mat-label>Date</mat-label>
         <input matInput type="date" id="date"  [max]="date" placeholder="date" formControlName="date">
       </mat-form-field>
 
       <!--  value for conversion  -->
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" data-cy="value">
         <mat-label>Value</mat-label>
         <input matInput type="number" id="value" placeholder="value" formControlName="value">
       </mat-form-field>
 
       <!--  Submit  -->
-      <button mat-raised-button color="primary" [disabled]="converterForm.invalid" >submit</button>
+      <button mat-raised-button color="primary" [disabled]="converterForm.invalid" data-cy="submit">submit</button>
 
     </div>
 
