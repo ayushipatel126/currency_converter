@@ -20,6 +20,7 @@ export class ConverterComponent implements OnInit {
   filteredCurrencyCodeFrom: Observable<any[]>;
   filteredCurrencyCodeTo: Observable<any[]>;
   date: string;
+  error: string;
 
   /**
    * Creates an instance of App Component.
@@ -107,8 +108,10 @@ export class ConverterComponent implements OnInit {
       if (response.observations.length > 0) {
         this.converterOutput = new ConverterOutput(form, series, response.observations[0][series].v);
         this.converterOutput.calculate();
+        this.error = null;
       } else {
-        alert('No observation found for specific date');
+        this.converterOutput = null;
+        this.error = 'No observation found for specific date';
       }
     });
   }

@@ -1,25 +1,28 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+/// <reference types="Cypress" />
+import moment from 'moment';
+
+Cypress.Commands.add('convertCurrency', (from, to, value, date = null) => {
+    cy.get('[data-cy=fromCurrency]').find('input').clear().type(from)
+    cy.get('[data-cy=toCurrency]').find('input').clear().type(to)
+    if (date) {
+        cy.get('[data-cy=date]').find('input').clear().type(date)
+    }
+    cy.get('[data-cy=value]').find('input').clear().type(value)
+    cy.get('[data-cy=submit]').click()
+})
+
+Cypress.Commands.add('verifyConvertedOutput', (from, to, value, date = null) => {
+    var dateObj = date ? moment(date) : moment();
+    var isWeekend = (dateObj.day() === 6) || (dateObj.day() === 0);
+    if (isWeekend) {
+        cy.get('[data-cy="error"]')
+            .should('contain', 'Error: No observation found for specific date')
+    } else {
+        cy.get('[data-cy="output"]')
+            .should('contain', `From: ${from}`)
+            .should('contain', `To: ${to}`)
+            .should('contain', `Date: ${dateObj.format('YYYY-MM-DD')}`)
+            .should('contain', `Amount: ${value}`)
+            .should('contain', `Series: FX${from}${to}`)         
+    }
+})
