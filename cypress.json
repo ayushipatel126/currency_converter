@@ -1,4 +1,12 @@
 {
-    "baseUrl" : "http://localhost:4200"
+    "baseUrl": "http://localhost:4200",
+    "reporter": "mochawesome",
+    "reporterEnabled": "mochawesome",
+    "reporterOptions": {
+        "reportDir": "cypress/results",
+        "overwrite": true,
+        "html": true,
+        "json": false
+    },
+    "video": false
 }
-
