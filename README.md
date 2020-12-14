@@ -72,4 +72,5 @@ npm run cy:run
  -  Test cases are written based on requirement mentioned in [this project](https://gitlab.com/marshallzehr/coding-check)
  - Currently, I'm not checking against all public holiday (could be improvement area). 
  - I'm not performing UI/UX validation (for ex. button should be remain disable  until user enter all required fields or should display proper error message)
+  - I am assuming that Bank of Canada will add oberservation for every weekday by 12 AM except public holidays.
 
