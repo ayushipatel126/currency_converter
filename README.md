@@ -53,5 +53,23 @@ ng serve --open
  - Not acceptable: 0.00009
  - Acceptable 0.00012
 
+## Automation with Cypress
 
+## Run it locally
+
+First run project as mentioned above.
+To run automation test (report will not be generated)
+```bash
+npm run cy:open
+```
+
+To run headless browser (report will be generated in `cypress/results` folder)
+```bash
+npm run cy:run
+```
+
+## My assumption
+ -  Test cases are written based on requirement mentioned in [this project](https://gitlab.com/marshallzehr/coding-check)
+ - Currently, I'm not checking against all public holiday (could be improvement area). 
+ - I'm not performing UI/UX validation (for ex. button should be remain disable  until user enter all required fields or should display proper error message)
 
