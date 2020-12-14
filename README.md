@@ -75,7 +75,7 @@ npm run cy:run
  - I am assuming that Bank of Canada will add oberservation for every weekday by 12 AM except public holidays.
 
 
-## Improvment Area for Developer
+## Improvement Area for Developer
  - Should display user firendly message for required fields
  - Should add test attributes in UI
  - Make sure each UI element should be accessible by test framework
